@@ -1,0 +1,36 @@
+build:
+  gpu: true
+  cuda: "11.8"
+  python_version: "3.11"
+  system_packages:
+    - "ffmpeg"
+    - "libsndfile1"
+  python_packages:
+    - "datasets==2.12.0"
+    - "fairseq2==0.2.0"
+    - "fire==0.5.0"
+    - "librosa==0.10.1"
+    - "simuleval==1.1.4"
+    - "soundfile==0.12.1"
+    - "scipy==1.10.1"
+    - "tqdm==4.64.1"
+    - "torchaudio>=2.0.2"
+    - "torch>=2.0.1"
+    - "openai-whisper"
+    - "git+https://github.com/cuuupid/cog-seamless"
+    # - "tbb"
+    # - "tbb-devel"
+  run:
+    - curl -o /usr/local/bin/pget -L https://github.com/replicate/pget/releases/download/v0.6.0/pget_Linux_x86_64
+    - chmod +x /usr/local/bin/pget
+    # - pip install cmake
+    # - " cd /tmp \
+    #     && git clone https://github.com/oneapi-src/oneTBB.git \
+    #     && cd oneTBB \
+    #     && mkdir build && cd build \
+    #     && cmake -DCMAKE_INSTALL_PREFIX=/tmp/my_installed_onetbb -DTBB_TEST=OFF .. \
+    #     && cmake --build . \
+    #     && cmake --install .
+    #     && export TBB_ROOT=/tmp/my_installed_onetbb
+    #     "
+predict: "predict.py:Predictor"
